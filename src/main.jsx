@@ -7,16 +7,15 @@ import "tippy.js/animations/scale-extreme.css";
 import './index.css'
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider, useMsal } from "@azure/msal-react";
-
 import { msalConfig } from "./authConfig";
 import { HashRouter } from "react-router-dom";
 
 const msalInstance = new PublicClientApplication(msalConfig);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
     <HashRouter>
  <MsalProvider instance={msalInstance}>
-    <App/>
+
+    <App />
     </MsalProvider>
     </HashRouter>
 )

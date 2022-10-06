@@ -1,8 +1,8 @@
 export const base={
- baseURL:'http://localhost:7065/api/'
+//baseURL:'https://propupcmmsapimanagement.azure-api.net/PropupCMMS/'
 
-  // baseUrl:'http://localhost:90'
-       ,headers:{'Content-Type':'application/json'}}
+baseURL:'http://localhost:7065/api/'
+       ,headers:{'Content-Type':'application/json; charset=utf-8'}}
        
       export  const get={method:'get'}
      export  const post={method:'post'}

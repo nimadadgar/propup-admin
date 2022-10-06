@@ -4,6 +4,7 @@ import { ClipLoader } from "react-spinners";
 import {useApi ,userCommand} from '../../Api'
 import { useParams } from "react-router-dom";
 import NotFound from '../NotFound'
+import axios from "axios";
 
 function AcceptInviteUser()
 {
@@ -15,21 +16,24 @@ function AcceptInviteUser()
   const { handleSubmit,watch,register,control,setValue ,getValues,formState: { isValid, errors }, reset } = useForm({
     defaultValues:{} });
 
-    
+
+
 
   const [loading,callApi]=useApi();
   let params = useParams();
 
-
   useEffect(()=>{
+
   var id=params.id;
   loadInviteUser(id);
+
+  
  
   },[])
 
   const loadInviteUser=async (id)=>{
  var result=await   callApi(userCommand.inviteInfo(id));
- console.log(result);
+ console.log("loading Result:",result)
  if (!result.success)
  {
   setStatus(2);

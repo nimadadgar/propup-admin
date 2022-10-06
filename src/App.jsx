@@ -13,6 +13,8 @@ import {Button} from './Component'
 import { EventType, InteractionType } from "@azure/msal-browser";
 import { b2cPolicies } from "./authConfig";
 import AcceptInviteUser from './Pages/AcceptInviteUser'
+import { get } from 'react-hook-form';
+
 const Splash=()=>{
   return <>
     <div>User Login Please</div>
@@ -38,53 +40,14 @@ function App()
   
   const { instance, accounts, inProgress } = useMsal();
 
+
+
+
   const account = useAccount(accounts[0] || {});
 
 const NoMatch=()=>{
   return <div>No Match</div>
 }
-
-
-useEffect(() => {
-  const callbackId = instance.addEventCallback((event) => {
-    if ((event.eventType === EventType.LOGIN_SUCCESS || event.eventType === EventType.ACQUIRE_TOKEN_SUCCESS) && event.payload.account) {
-        /**
-         * For the purpose of setting an active account for UI update, we want to consider only the auth 
-         * response resulting from SUSI flow. "tfp" claim in the id token tells us the policy (NOTE: legacy 
-         * policies may use "acr" instead of "tfp"). To learn more about B2C tokens, visit:
-         * https://docs.microsoft.com/en-us/azure/active-directory-b2c/tokens-overview
-         */
-        if (event.payload.idTokenClaims['tfp'] === b2cPolicies.names.editProfile) {
-          // retrieve the account from initial sing-in to the app
-          const originalSignInAccount = instance.getAllAccounts()
-              .find(account =>
-                account.idTokenClaims.oid === event.payload.idTokenClaims.oid
-                &&
-                account.idTokenClaims.sub === event.payload.idTokenClaims.sub
-                &&
-                account.idTokenClaims['tfp'] === b2cPolicies.names.signUpSignIn
-              );
-          
-          let signUpSignInFlowRequest = {
-              authority: b2cPolicies.authorities.signUpSignIn.authority,
-              account: originalSignInAccount
-          };
-  
-          // silently login again with the signUpSignIn policy
-          instance.ssoSilent(signUpSignInFlowRequest);
-        }
-      }
-  });
-
-  return () => {
-      if (callbackId) {
-          instance.removeEventCallback(callbackId);
-      }
-  }
-// eslint-disable-next-line  
-}, []);
-
-
 
 
   return (
@@ -105,13 +68,14 @@ useEffect(() => {
         bodyClassName="font-bold"
       />
       <Routes>
-      <Route path="/user/acceptinvite/:id" element={<AcceptInviteUser />} />
-
-      <Route path="/" element={<Dashboard />}>
+      <Route  path="/user/acceptinvite/:id" element={<AcceptInviteUser />} />
+      <Route exact path="/" element={<Dashboard />}>
           <Route index element={<Home />} />
           <Route path="memberlist" element={<MemberList />} />
           <Route path="*" element={<NoMatch />} />
-    </Route>
+       </Route>
+
+      
 
       </Routes>
 

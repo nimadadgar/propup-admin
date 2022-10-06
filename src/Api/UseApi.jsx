@@ -10,30 +10,34 @@ import {useStore} from '../Store'
 
 export const useApi = (defaultData = null) => {
 
-    const state = useStore()
-    if (state.token!==null)
-    {
-        const token = state.token;
-            setAuthorization(token);
-    }
+    // const state = useStore()
+    // if (state.token!==null)
+    // {
+    //     const token = state.token;
+    //       setAuthorization(token);
+    // }
    
     
 
     const [loading, setLoading] = useState(false)
     const callApi = async (data = null) => {
 
+
         const _data = data == null ? defaultData : data
         if (_data == null || _data == undefined)
             throw Error('data must not be null')
             setLoading(true)
+
+
         const response = await InternalCallApi(_data)
+        console.log("Response",response);
         setLoading(false)
 
         if (response.httpCode==403)
         {
             //////////Manage Permission
             state.setPageInfo({status:'error',
-            func:null,error:'دسترسی ندارید'});
+            func:null,error:'No Access'});
 
         }
         
@@ -55,6 +59,11 @@ export const useApiInstant = (defaultData = null) => {
             throw Error('data must not be null')
 
         setLoading(true)
+
+        console.log("Request DAta");
+        var r= axios(data);
+        console.log("Console",r);
+
         const response = await InternalCallApi(data)
         setLoading(false)
         setResponse(response)
@@ -69,24 +78,19 @@ export const useApiInstant = (defaultData = null) => {
 
 
 
-export const setDefaults = () => {
-    axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
-   // axios.defaults.headers.common['ApiKey'] = API_KEY;
-    axios.defaults.timeout = 1000;
-    axios.defaults.headers.common['Accept'] = 'application/json'
-}
+
 
 export const setAuthorization = (token) => {
-    axios.defaults.headers.common['Authorization'] = `Basic ${token}`;
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 }
 
 const onResponseSuccess = (response) => {
+    console.log("REsponse success");
     return {...response.data,httpCode:200,success:true};
 };
 
 function onResponseError(error) {
-
+console.log("Err0r in network request error response",error.response);
     const expectedError =
         error.response &&
         error.response.status >= 400 &&
@@ -100,6 +104,7 @@ function onResponseError(error) {
     {
     //    window.location.replace('/#/login')
     }
+    console.log(error);
 
     if (expectedError) {
         return { 
@@ -110,12 +115,13 @@ function onResponseError(error) {
                 }
     }
     else {
+        
         return { 
                 errorType:500,
                 httpCode: 500,
                 data:null,
                 success:false,
-                message: "خطای سرور ، لطفا دوباره تلاش کنید" }
+                message: "Error in Request To Server Please Try Again" }
     }
 
 

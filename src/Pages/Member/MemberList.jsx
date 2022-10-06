@@ -32,25 +32,23 @@ export function MemberList() {
       {
         id: 'jobtitle',
         width:'15%',
-        Header: () => <div className="">Job Title</div>,
+        Header: () => <div className="m-auto">Job Title</div>,
   
         accessor: (row) => (
-          <div className="text-left text-gridTextColor">{row.jobTitle}</div>),
+          <div className="text-center text-gridTextColor">{row.jobTitle}</div>),
   
       },
       {
-        Header: "Status",
-        
+        Header: () => <div className="m-auto">Status</div>,
+        id:"status",
         width:'15%',
         accessor: (row) => {
           var img = row.status === 'Available' ? Available : Busy
           return (
-            <div className='group   hover:rounded-full hover:pl-2 hover:mr-2 hover:py-2 hover:bg-statusSelectColor flex flex-row items-center justify-start		'>
+            <div className='group  hover:rounded-full pl-4  hover:mr-2 hover:py-2 hover:bg-statusSelectColor flex flex-row items-center justify-start		'>
               <img src={img} width={20} height={20} />
               <span className="ml-2">{row.status}</span>
               <div className="group-hover:block hidden  pl-4 font-bold cursor-pointer">
-  
-  
                 <Tippy
                   placement="bottom"
   
@@ -99,10 +97,10 @@ export function MemberList() {
       {
         id: 'Location',
         width:'15%',
-        Header: () => <div className="">Location</div>,
+        Header: () => <div className="m-auto">Location</div>,
   
         accessor: (row) => (
-          <div className="text-left text-gridTextColor">{row.location}</div>),
+          <div className="text-center text-gridTextColor">{row.location}</div>),
   
       },
 
@@ -195,6 +193,8 @@ export function MemberList() {
   
     const onChangeTable =async () => {
       var result=await callApi(userCommand.memberList({pageSize:100}))
+
+
   setList(result.data.list)
     }
   
@@ -223,145 +223,4 @@ export function MemberList() {
   
     )
   }
-  
-  
-  
-  
-  const listPerson = [
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Busy',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-    {
-      fullName: "Mark Smit",
-      jobTitle: "Electrician",
-      picture: 'https://i.pravatar.cc/300',
-      status: 'Available',
-      currentWorkOrder: '',
-      lastWorkOrder: '405 from last year'
-    },
-  
-  
-  ]
-  
+

@@ -4,7 +4,7 @@ import {Header} from './Header'
 import {Sidebar} from './Sidebar'
 import {AddMember} from '../Member/AddMember'
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
-import { MsalAuthenticationTemplate, useMsal, useAccount } from "@azure/msal-react";
+import { MsalAuthenticationTemplate,useMsal, useAccount } from "@azure/msal-react";
 import { loginRequest, protectedResources } from "../../authConfig";
 import { EventType, InteractionType } from "@azure/msal-browser";
 import {useStore} from '../../Store'
@@ -54,7 +54,9 @@ const addMemberEvent=()=>{
     
 
     <Div100vh className="flex flex-row bg-background/20">
-     
+      
+
+
       
       <MsalAuthenticationTemplate 
       interactionType={InteractionType.Redirect} 
@@ -78,7 +80,7 @@ const addMemberEvent=()=>{
         </Div100vh>
     
         </MsalAuthenticationTemplate>
-
+      
   </Div100vh>
  
   )

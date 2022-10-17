@@ -6,7 +6,7 @@ import Card from './Card'
 import Table from './Table'
 import ListBox from './ListBox'
 import CheckedListBox from './CheckedListBox'
-
+import {CustomInput} from './Input/CustomInput'
 import CustomAlert from './CustomeAlert'
 export {
     Input
@@ -18,5 +18,6 @@ export {
     ,Table
     ,ListBox
     ,CheckedListBox
+    ,CustomInput
 
 }

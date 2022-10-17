@@ -38,13 +38,13 @@ const Modal = ({
           fullScreen
             ? `w-screen h-full ${fullWidth ? "w-full" : "md:w-4/5"}`
             : "w-screen"
-        } flex items-center justify-center overflow-auto `}
+        } flex items-center justify-center  overflow-auto `}
         onClose={() => {}}
       >
         <div
           className={`${
             fullScreen
-              ? "w-full h-full"
+              ? "w-full h-full "
               : `${
                   fullWidth
                     ? "w-full"
@@ -94,7 +94,7 @@ const Modal = ({
                   <p className="font-normal text-sm">{name}</p>
                   <button onClick={onClose}>
                     <FiX
-                      title="بستن"
+                      title="Close"
                       className="transform scale-150 transition duration-100 hover:opacity-80"
                     />
                   </button>

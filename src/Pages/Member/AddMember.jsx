@@ -60,7 +60,7 @@ export function AddMember({isOpen,onClose}) {
         isOpen={isOpen}
         onClose={onClose}
       >
-                <form onSubmit={handleSubmit(onSubmitHandler)} className="overflow-hidden">
+                <form onSubmit={handleSubmit(onSubmitHandler)} className="overflow-hidden ">
 
         <div className="grid   grid-col-10 gap-4 mx-2 space-y-2 pt-4 	 ">
 

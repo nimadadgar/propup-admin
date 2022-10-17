@@ -136,13 +136,13 @@ const Table = ({ columns, data,pagination,onChange,loading,showFilter,
 
 
   return (
-    <div className="pt-4  h-full">
-      <>
+    <div className="h-full  overflow-auto scrollbar ">
+      <div>
        
-          <div className=" relative  overflow-x-auto 	scrollbar	" style={{maxHeight:maxHeight}}>
+          <div className="   overflow-x-auto 	scrollbar h-full" >
         {loading &&  <div style={{ height: 50 }} className="mx-2 mb-1  flex justify-center items-center">
         <div className="p-4 mb-4 text-sm   "/>
-          <span>در حال دریافت اطلاعات</span>
+          <span className="px-4"> Loading data please wait  </span>
               <ClipLoader size={15} color={'blue'} />
             </div>
             }
@@ -229,12 +229,11 @@ const Table = ({ columns, data,pagination,onChange,loading,showFilter,
 
           {(data?.length === 0  && loading===false)&&
           <div
-          
           />
         }
       
         {data?.length !== 0 && pagination && (
-          <div className="flex items-center flex-wrap justify-end mt-12 border-t border-borderSolid gap-4">
+          <div className="flex  items-center flex-wrap justify-end mt-12 border-t border-borderSolid gap-4">
             <div className="flex flex-wrap gap-4 items-center py-2 px-4 rounded-lg justify-end mt-2 mx-auto md:mx-0">
               <div className="flex items-center justify-end mx-auto sm:mx-0">
               <Select
@@ -293,7 +292,7 @@ const Table = ({ columns, data,pagination,onChange,loading,showFilter,
             </div>
           </div>
         )}
-      </>
+      </div>
     </div>
   );
 };

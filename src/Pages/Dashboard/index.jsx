@@ -2,13 +2,13 @@ import {useState,useEffect} from 'react'
 import Div100vh, { use100vh } from 'react-div-100vh'
 import {Header} from './Header'
 import {Sidebar} from './Sidebar'
-import {AddMember} from '../Member/AddMember'
 import { Routes, Route, Link, Outlet } from 'react-router-dom';
 import { MsalAuthenticationTemplate,useMsal, useAccount } from "@azure/msal-react";
 import { loginRequest, protectedResources } from "../../authConfig";
 import { EventType, InteractionType } from "@azure/msal-browser";
 import {useStore} from '../../Store'
 
+import {Home, Logo,ArrowLeft,ArrowRight,Icon,UserLogo,WorkOrder,Tech,Mach,Report,Inventory,FiMoreHorizontal} from '../../assets/icons'
 
 export const Dashboard=()=>{
 
@@ -32,10 +32,7 @@ useEffect(()=>{
 
 });
 },[])
-    const [showAddMemberModal,setShowAddMemberModal]=useState(false);
-const addMemberEvent=()=>{
-    setShowAddMemberModal(true);
-}
+
 
     if (account===null)
     {       
@@ -53,32 +50,24 @@ const addMemberEvent=()=>{
     return (
     
 
-    <Div100vh className="flex flex-row bg-background/20">
-      
-
-
-      
+    <Div100vh className="flex flex-col bg-background/20 ">
       <MsalAuthenticationTemplate 
       interactionType={InteractionType.Redirect} 
       authenticationRequest={authRequest}
-  >
+  >        
 
-    <Sidebar />
- 
-        <Div100vh className="flex-1 flex flex-col   scrollbar overflow-scroll" >
-        <Header instance={instance} addMemberEvent={addMemberEvent} />
+<Header instance={instance}  />
 
-
-       <div className="px-8 scrollbar flex flex-col  overflow-scroll flex-1">    
-        <AddMember onClose={()=>setShowAddMemberModal(false)} isOpen={showAddMemberModal} />
-
-        <section name="Content" className=" pt-5   scrollbar overflow-auto  flex-1 ">
-          <Outlet />
+<Div100vh className="flex-1 flex flex-row z-[0] bg-gray-100  overflow-hidden " >       
+<Sidebar />
+        <div className="px-8  flex flex-row  flex-1  ">    
+        <section name="Content" className=" pt-5     flex-1 ">
+       <Outlet />
         </section>
+
         </div>
-        
+
         </Div100vh>
-    
         </MsalAuthenticationTemplate>
       
   </Div100vh>

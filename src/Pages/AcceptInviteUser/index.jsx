@@ -49,7 +49,6 @@ function AcceptInviteUser()
   const onSubmitHandler=async (data)=>{
 
     var result=await   callApi(userCommand.acceptInvite({id:params.id,password:data.password}));
-    console.log(result);
     if (!result.success)
     {
   setError(result.message);
@@ -99,6 +98,7 @@ function AcceptInviteUser()
       </div>
       <form onSubmit={handleSubmit(onSubmitHandler)} className="flex flex-col items-center justify-center px-8 pt-8 ">
         <input 
+        type="password"
         options={{
           required: true,
         }} 
@@ -110,7 +110,7 @@ function AcceptInviteUser()
 
 
       
-        <input placeholder="Confirm Password"
+        <input type="password" placeholder="Confirm Password"
                 {...register("confirmPassword", { required:  "Cofirm Password  is required",
                   validate: (val) => {
                     if (watch('password') != val) {

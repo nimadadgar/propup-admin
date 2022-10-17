@@ -17,9 +17,9 @@ export function FactoryComboBox() {
   const [selected, setSelected] = useState(people[0])
 
   return (
-    <div className="w-full  text-white border rounded-md border-white/70 ">
+    <div className="w-full  text-black border rounded-md border-white/70 ">
     <Listbox value={selected} onChange={setSelected}>
-      <div className="relative mt-1 z-50 ">
+      <div className="relative mt-1 z-150 ">
         <Listbox.Button className="relative  w-full cursor-default rounded-lg
           py-2 pl-3 pr-10 text-left shadow-md focus:outline-none
            focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -39,7 +39,7 @@ export function FactoryComboBox() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+          <Listbox.Options className="absolute mt-1 z-[200] max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
             {people.map((person, personIdx) => (
               <Listbox.Option
                 key={personIdx}

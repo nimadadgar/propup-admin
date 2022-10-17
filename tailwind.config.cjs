@@ -4,14 +4,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background:"#DFDFDF",
+
+        statusYellow:"#F3B140",
+        statusGreen:"#38D3A6",
+        btnBlue:"#308FED",
         yellow:"#FFD615",
         error:"#D93A1B",
         attention:"#32CEA1",
-        sidebar:"#0A5F59",
+        sidebar:"#2F3860",
         textSidebar:"#ABCAC8",
         textSelectColor:"#0A5F59",
-        selected:"#0C756F",
+        selected:"#565F86",
         GridHeaderColor:"#F8FAFB",
         gridBlueColor:'#3957D3',
         gridTextColor:'#233B43',

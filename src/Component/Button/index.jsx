@@ -26,6 +26,7 @@ const Button = ({
   const _class = [];
   const variantStyles = {
     filledPrimary: "px-4 bg-yellow text-black",
+    filledSecondary: "px-4 bg-btnBlue text-white",
     transparent:"px-4 bg-white border border-sidebar text-sidebar ",
     hidden: "bg-transparent bg-sidebar border-2 border-sidebar text-sidebar ",
     cancel: "bg-dusty-gray-700 text-white",
@@ -33,6 +34,7 @@ const Button = ({
     attention: "bg-flame-pea-500 text-white",
     command: "px-4 bg-green-500 text-white",
     icon: "bg-transparent  ",
+    
 
   };
 
@@ -64,12 +66,12 @@ const Button = ({
           ? { filter: "grayscale(1)", pointerEvents: "none" }
           : {}),
       }}
-      className={`select-none ${className}`}
+      className={`select-none 	 ${className}`}
       onClick={disabled || loading ? undefined : onClick}
       {...rest}
     >
       <div
-        className={`active:opacity-70 px-2 transition-all overflow-hidden font-bold w-full flex justify-center items-center relative ${_class.join(
+        className={`active:opacity-70 px-2  transition-all overflow-hidden font-bold w-full flex justify-center items-center relative ${_class.join(
           " "
         )}`}
       >

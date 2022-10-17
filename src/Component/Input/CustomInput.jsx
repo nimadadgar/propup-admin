@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { FiEye, FiEyeOff } from "react-icons/fi";
 import { FcHighPriority } from "react-icons/fc";
 
-const Input = ({
+export const CustomInput = ({
   name = "",
   options = {},
   register,
@@ -40,9 +40,6 @@ const Input = ({
            <input 
            
          placeholder="                  "
-        { ...register(name, { ...options })}
-
-        
  onFocus={onFocus}
  onSubmit={onSubmit}
  
@@ -87,4 +84,3 @@ const Input = ({
   );
 };
 
-export default Input;
